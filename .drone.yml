@@ -1,0 +1,16 @@
+kind: pipeline
+type: docker
+name: 构建
+
+clone:
+  depth: 1
+
+steps:
+  - name: 提示
+    image: docker
+    commands:
+      - curl  -X POST -H "Content-Type:application/json" --data '{"msgtype": "text","text": {"content": "部署测试"}}' https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=3d34f8e1-f59c-45ff-89e6-e78b6253d29f
+
+trigger:
+  branch:
+    - master
